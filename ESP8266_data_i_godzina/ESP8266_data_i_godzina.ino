@@ -17,7 +17,7 @@
 
 Dusk2Dawn Gliwice(50.2833, 18.6667, +2);
 
-float PROGRAM_VERSION = 7.01;
+float PROGRAM_VERSION = 7.04;
 
 // Replace with your network credentials
 const char *ssid     = "pozdrawiam";
@@ -264,16 +264,16 @@ void loop() {
     szacowany_stopien_otwarcia += 0.001*(currentMillis-szacowaneOtwieranieMillis)*3.5;
     szacowaneOtwieranieMillis=currentMillis;
   }else if(going_down==HIGH){
-    szacowany_stopien_otwarcia -= 0.001*ms*(currentMillis-szacowaneOtwieranieMillis)*3.5;
+    szacowany_stopien_otwarcia -= 0.001*(currentMillis-szacowaneOtwieranieMillis)*3.5;
     szacowaneOtwieranieMillis=currentMillis;
   }  else{
     szacowaneOtwieranieMillis=currentMillis;
   }
   if(going_up2==HIGH){
-    szacowany_stopien_otwarcia2 += 0.001*ms*(currentMillis-szacowaneOtwieranie2Millis)*7;
+    szacowany_stopien_otwarcia2 += 0.001*(currentMillis-szacowaneOtwieranie2Millis)*7;
     szacowaneOtwieranie2Millis=currentMillis;
   }else if(going_down2==HIGH){
-    szacowany_stopien_otwarcia2 -= 0.001*ms*(currentMillis-szacowaneOtwieranie2Millis)*7;
+    szacowany_stopien_otwarcia2 -= 0.001*(currentMillis-szacowaneOtwieranie2Millis)*7;
     szacowaneOtwieranie2Millis=currentMillis;
   }else{
     szacowaneOtwieranie2Millis=currentMillis;    
@@ -568,10 +568,15 @@ void loop() {
         }else{
           client.println("<a href=\"http://osiek.zapto.org:305/\">Kuchnia</a>");
         }      
-      if(WiFi.localIP()[3] == 29){
-          client.println("<a class='active' href=\"http://osiek.zapto.org:305/\">Jadalnia</a>");
+      if(WiFi.localIP()[3] == 70){
+          client.println("<a class='active' href=\"http://osiek.zapto.org:306/\">Salon</a>");
         }else{
-          client.println("<a href=\"http://osiek.zapto.org:305/\">Jadalnia</a>");
+          client.println("<a href=\"http://osiek.zapto.org:306/\">Salon</a>");
+        }
+        if(WiFi.localIP()[3] == 29){
+          client.println("<a class='active' href=\"http://osiek.zapto.org:307/\">Jadalnia</a>");
+        }else{
+          client.println("<a href=\"http://osiek.zapto.org:307/\">Jadalnia</a>");
         }
       client.println("</div>");
       client.println("      <div class='w3-container w3-card w3-white'>");
